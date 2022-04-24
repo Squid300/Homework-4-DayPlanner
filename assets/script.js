@@ -40,8 +40,9 @@ console.log(inputEl)
 dayEl.text(day);
 
 //parsing plans from local storage
-plans = JSON.parse(localStorage["planner"]);
-
+if(localStorage.getItem("planner") !== null){
+    scoreSave = JSON.parse(localStorage["planner"]);
+}
 //coloring planner based on real time
 for(i=0; i<inputEl.length; i++){
     const current = inputEl[i];

@@ -70,9 +70,10 @@ btnEl.on("click", function(event){
     for(i=0; plans.length; i++){
         if(plans[i].hour == selectTime){
             plans[i].plan = this.previousElementSibling.value;
+            localStorage.setItem("planner", JSON.stringify(plans));
         }
     }
-    localStorage.setItem("planner", JSON.stringify(plans));
+    
 })
 
 previousPlans();

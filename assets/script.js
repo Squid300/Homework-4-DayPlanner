@@ -41,8 +41,9 @@ dayEl.text(day);
 
 //parsing plans from local storage
 if(localStorage.getItem("planner") !== null){
-    scoreSave = JSON.parse(localStorage["planner"]);
+    plans = JSON.parse(localStorage["planner"]);
 }
+
 //coloring planner based on real time
 for(i=0; i<inputEl.length; i++){
     const current = inputEl[i];
@@ -75,6 +76,7 @@ btnEl.on("click", function(event){
         if(plans[i].hour == selectTime){
             plans[i].plan = this.previousElementSibling.value;
             localStorage.setItem("planner", JSON.stringify(plans));
+            return;
         }
     }
     

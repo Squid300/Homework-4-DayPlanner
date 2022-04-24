@@ -1,6 +1,8 @@
 const inputEl = $(".input");
 const btnEl = $(".saveBtn");
+const dayEl = $("#currentDay")
 const time = moment().format("HH");
+const day = moment().format("MMM:DD:ddd")
 //setting array to store plans to write and read from storage
 let plans = [
     {
@@ -35,6 +37,7 @@ let plans = [
 
 console.log(time);
 console.log(inputEl)
+dayEl.text(day);
 
 //parsing plans from local storage
 plans = JSON.parse(localStorage["planner"]);

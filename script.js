@@ -1,6 +1,7 @@
 const inputEl = $(".input");
 const btnEl = $(".saveBtn");
 const time = moment().format("HH");
+//setting array to store plans to write and read from storage
 let plans = [
     {
         hour: 09,
@@ -35,9 +36,10 @@ let plans = [
 console.log(time);
 console.log(inputEl)
 
+//parsing plans from local storage
 plans = JSON.parse(localStorage["planner"]);
 
-
+//coloring planner based on real time
 for(i=0; i<inputEl.length; i++){
     const current = inputEl[i];
     if(current.dataset.time < time){
@@ -49,6 +51,7 @@ for(i=0; i<inputEl.length; i++){
     }
 }
 
+//updating planner with plans from local storage
 function previousPlans(){
     for(i=0; i<inputEl.length; i++){
         for(o=0; o<plans.length; o++){
@@ -59,6 +62,7 @@ function previousPlans(){
     }
 }
 
+//on save buton click, adding plan to array and storing it locally
 btnEl.on("click", function(event){
     console.log(this.previousElementSibling.value);
     const selectTime = this.previousElementSibling.dataset.time;
@@ -66,7 +70,6 @@ btnEl.on("click", function(event){
     for(i=0; plans.length; i++){
         if(plans[i].hour == selectTime){
             plans[i].plan = this.previousElementSibling.value;
-            localStorage.setItem("planner", JSON.stringify(plans));
         }
     }
     localStorage.setItem("planner", JSON.stringify(plans));
